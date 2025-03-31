@@ -1,0 +1,30 @@
+class Program
+{
+    static void Main()
+    {
+        string rollNumber = "24-SET-44";
+        string department = "Software Engineering Technology";
+        string[] semesterSubjects = { "OOP", "SCM", "DS", "QHT", "Probability and Statistics", "Functional English" };
+
+        string filePath = "student_info.txt";
+
+        try
+        {
+            using (StreamWriter writer = new StreamWriter(filePath))
+            {
+                writer.WriteLine("Roll Number: " + rollNumber);
+                writer.WriteLine("Department: " + department);
+                writer.WriteLine("Second Semester Subjects:");
+                foreach (string subject in semesterSubjects)
+                {
+                    writer.WriteLine("- " + subject);
+                }
+            }
+
+            Console.WriteLine("Information written to " + filePath);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error: " + ex.Message);
+        }
+    }
